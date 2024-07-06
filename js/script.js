@@ -31,10 +31,10 @@ function putStudents(student) {
     <tr>
       <th scope="row">${student.id}</th>
       <td>${student.name}</td>
-      <td>${student.email}</td>
-      <td>${student.phone}</td>
-      <td>${course}</td>
-      <td>${student.period}</td>
+      <td class="d-none d-md-table-cell">${student.email}</td>
+      <td class="d-none d-md-table-cell">${student.phone}</td>
+      <td class="d-none d-md-table-cell">${course}</td>
+      <td class="d-none d-md-table-cell">${student.period}</td>
     </tr>
     `
 }
