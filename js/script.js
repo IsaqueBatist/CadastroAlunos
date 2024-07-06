@@ -11,7 +11,7 @@ let alunos = [
 ]
 
 
-const periodos = [
+const courses = [
   {id: 1, course: 'Java'},
   {id: 2, course: 'Python'},
   {id: 3, course: 'TypeScript'},
@@ -19,10 +19,30 @@ const periodos = [
   {id: 5, course: 'React'}
 ]
 
+function loadStudents(studentsArray){
+  studentsArray.map((student) => putStudents(student))
+}
 
+function putStudents(student) {
+  const body = document.getElementById('bodytabel')
+  const {course} = courses[student.course]
 
-document.getElementById('registerForm').addEventListener("submit", function(event) {
+    body.innerHTML+=`
+    <tr>
+      <th scope="row">${student.id}</th>
+      <td>${student.name}</td>
+      <td>${student.email}</td>
+      <td>${student.phone}</td>
+      <td>${course}</td>
+      <td>${student.period}</td>
+    </tr>
+    `
+}
+const form = document.getElementById('registerForm')
+
+form.addEventListener("submit", function(event) {
   event.preventDefault()
+  
   let newAluno = {
     id: alunos.length + 1,
     name: document.getElementById('inputName3').value,
@@ -31,7 +51,9 @@ document.getElementById('registerForm').addEventListener("submit", function(even
     course: document.getElementById('languages').value,
     period: document.querySelector('input[name=exampleRadios]:checked').value
   }
-  console.log(newAluno)
   alunos.push(newAluno)
-
+  putStudents(newAluno)
+  form.reset()
 })
+
+loadStudents(alunos)
